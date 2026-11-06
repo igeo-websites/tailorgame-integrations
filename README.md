@@ -15,7 +15,7 @@ Standalone MIT-licensed release candidates for Tailorgame's existing public, rea
 
 List public games, read public practice rankings, and retrieve public documentation from `https://tailorgame.com`. Calls use fixed GET endpoints without credentials. They do not implement private account access, account mutations, paid generation, or payments. Catalog entries can be `coming-soon`; check their status. Rankings contain client-reported practice results.
 
-The [JavaScript package README](packages/javascript/README.md) and [Python package README](packages/python/README.md) contain working local-install examples, method signatures, timeout limits, and error handling. [Agent setup](agent-configs/README.md) explains optional assistant configuration. These are proposed distribution artifacts, not proof that a package has been released or listed by a directory.
+The [JavaScript package README](packages/javascript/README.md) and [Python package README](packages/python/README.md) contain working local-install examples, method signatures, timeout limits, and error handling. [Agent setup](agent-configs/README.md) explains optional assistant configuration. The GitHub archives are published downloads. npm/PyPI registry publication remains separate and pending.
 
 ## Install the public skill
 
@@ -37,7 +37,13 @@ The plugin uses the root `.claude-plugin/plugin.json` and `skills/` directory. I
 
 ## Package downloads
 
-The planned GitHub release is **pending**: `https://github.com/igeo-websites/tailorgame-integrations/releases/tag/v1.0.0`. This README does not claim that release or its assets exist yet. Once published and verified, its npm tarball, Python wheel, and source distribution can be installed directly without npm/PyPI publisher accounts. Registry publication is still separate and pending.
+The [GitHub v1.0.0 release](https://github.com/igeo-websites/tailorgame-integrations/releases/tag/v1.0.0) is published. Both downloads were verified against their reviewed hashes and installed cleanly. No publisher account is needed to install them; npm/PyPI registry publication is still pending.
+
+```sh
+npm install --ignore-scripts https://github.com/igeo-websites/tailorgame-integrations/releases/download/v1.0.0/tailorgame-sdk-1.0.0.tgz
+./node_modules/.bin/tailorgame --help
+python -m pip install https://github.com/igeo-websites/tailorgame-integrations/releases/download/v1.0.0/tailorgame_sdk-1.0.0-py3-none-any.whl
+```
 
 ## Validate and package locally
 
