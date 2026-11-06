@@ -8,7 +8,8 @@ Standalone MIT-licensed release candidates for Tailorgame's existing public, rea
 | --- | --- |
 | `packages/javascript/` | `tailorgame-sdk`, ESM JavaScript with TypeScript declarations and self-contained `tailorgame` CLI |
 | `packages/python/` | `tailorgame-sdk`, Python 3.9+ standard-library client imported as `tailorgame` |
-| `skills/`, `.claude-plugin/`, `.cursor/rules/` | Canonical public skill, root Claude Code plugin, and Cursor rule |
+| `plugin.json`, `skills/` | Portable Agent Plugins 1.0 manifest and canonical public skill |
+| `.claude-plugin/`, `.claude/`, `.cursor/rules/` | Claude plugin compatibility, repository instructions, and Cursor rule |
 | `agent-configs/` | Standalone copies for manual setup and the minimal plugin ZIP |
 
 ## What these clients do
@@ -33,7 +34,7 @@ A local checkout also works directly as a Claude Code plugin:
 claude --plugin-dir /absolute/path/to/tailorgame-integrations
 ```
 
-The plugin uses the root `.claude-plugin/plugin.json` and `skills/` directory. Invoke `/tailorgame-public:tailorgame-public`. For Cursor, copy `.cursor/rules/tailorgame-public.mdc` into your project's matching directory. Choose one skill installation method to avoid duplicate instructions. The smaller standalone plugin under `agent-configs/plugin/` and its ZIP remain available for manual distribution.
+The portable [Agent Plugins 1.0](https://agent-plugins.org/specification) manifest is `plugin.json`, with the canonical schema identifier and fixed `skills/` directory. Claude Code compatibility uses `.claude-plugin/plugin.json` and the same skills. The `.claude/CLAUDE.md` file provides repository development and test instructions; it does not install another skill. Invoke `/tailorgame-public:tailorgame-public`. For Cursor, copy `.cursor/rules/tailorgame-public.mdc` into your project's matching directory. Choose one skill installation method to avoid duplicate instructions. The smaller standalone plugin under `agent-configs/plugin/` and its ZIP remain available for manual distribution.
 
 ## Package downloads
 
