@@ -29,9 +29,10 @@
     "claudeAndCursorRuntime": "not run",
     "skillCreatorValidator": "unavailable: Python PyYAML dependency not installed; frontmatter inspected against official schema",
     "mitLicenseInAllArchives": "passed",
-    "releaseWorkflowYaml": "parsed with Ruby Psych; manual-only trigger, build-before-publish and publisher-only OIDC verified",
+    "releaseWorkflowYaml": "parsed with Ruby Psych; verify is default; verify runs build only with contents:read and skips both publishing jobs",
     "trustedPublishingExecution": "not run; registry publisher setup pending",
-    "skillFrontmatterYaml": "parsed successfully with Ruby Psych; name/description validated"
+    "skillFrontmatterYaml": "parsed successfully with Ruby Psych; name/description validated",
+    "verifyWorkflowExecution": "not run locally; root will dispatch GitHub verification after pushing this update"
   },
   "artifacts": [
     {
@@ -95,8 +96,8 @@
   "sourceFiles": [
     {
       "path": ".github/workflows/publish.yml",
-      "bytes": 4569,
-      "sha256": "105c61d324fa9ae7dd5f46fbd69620daaf23e21580a3f1fb4ab963d6f337daf2"
+      "bytes": 4573,
+      "sha256": "a6e557d9b0d27237c90ee5218a37d0977c77cb0ca64c4b438e6847b9a7f05c59"
     },
     {
       "path": ".gitignore",
@@ -110,13 +111,13 @@
     },
     {
       "path": "PUBLISHING.md",
-      "bytes": 4585,
-      "sha256": "a261627ac4ba698a72a90660ddfa15ebf298febc6a2823afe82c43a069fca61a"
+      "bytes": 5640,
+      "sha256": "fd482873cdf43bba550a41f1e0d4d2120a8ae8436c6a0804135da7cb1e9051df"
     },
     {
       "path": "README.md",
-      "bytes": 5799,
-      "sha256": "ec89b64000ac6f2dd286101bd096873826ade21ec5821b11ed47fcbbc902f727"
+      "bytes": 6359,
+      "sha256": "03b2a5925bbfdfa1f128f67ac19686f39eeda31fa4ea4934d3ef38182c871342"
     },
     {
       "path": "agent-configs/.claude/skills/tailorgame-public/SKILL.md",
@@ -232,5 +233,15 @@
   "publicationAuthorized": true,
   "license": "MIT",
   "repository": "https://github.com/igeo-websites/tailorgame-integrations",
-  "publicationStatus": "Authorized release candidates; npm/PyPI publisher authentication and setup pending"
+  "publicationStatus": "Source repository public under MIT; npm/PyPI packages not yet published and publisher setup pending",
+  "sourcePublication": {
+    "published": true,
+    "repository": "https://github.com/igeo-websites/tailorgame-integrations",
+    "initialCommit": "37ff3b1ff6a690386eb197deaf64d40076dc273c",
+    "verifiedAt": "2026-11-06"
+  },
+  "registryPublication": {
+    "npm": false,
+    "pypi": false
+  }
 }

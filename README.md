@@ -1,8 +1,8 @@
 # Tailorgame public integrations
 
-Standalone MIT-licensed release candidates for Tailorgame's existing public, read-only API. The approved public repository is [igeo-websites/tailorgame-integrations](https://github.com/igeo-websites/tailorgame-integrations). This directory contains no application backend, deployment configuration, user records, credentials, or private repository history.
+Standalone MIT-licensed release candidates for Tailorgame's existing public, read-only API. The source is published in [igeo-websites/tailorgame-integrations](https://github.com/igeo-websites/tailorgame-integrations), with its [initial public commit](https://github.com/igeo-websites/tailorgame-integrations/commit/37ff3b1ff6a690386eb197deaf64d40076dc273c) verified on November 6, 2026. This directory contains no application backend, deployment configuration, user records, credentials, or private repository history.
 
-**Status: MIT publication authorized; not yet published to npm or PyPI.** The owner approved the public integration files, package name `tailorgame-sdk`, and separate public repository. npm and PyPI both returned HTTP 404 for that name on November 6, 2026; this was not a reservation. The application repository remains private and outside this license grant. Publisher authentication and registry setup are still required; see [publishing setup](PUBLISHING.md).
+**Status: source public under MIT; packages not yet published to npm or PyPI.** The owner approved the public integration files and package name `tailorgame-sdk`. npm and PyPI both returned HTTP 404 for that name on November 6, 2026; this was not a reservation. The application repository remains private and outside this license grant. Publisher authentication and registry setup are still required for registry releases, not for players or public API use; see [publishing setup](PUBLISHING.md).
 
 | Directory | Deliverable |
 | --- | --- |
@@ -39,6 +39,8 @@ python3 -m pip wheel --no-deps --no-build-isolation --no-index --wheel-dir dist 
 
 Inspect both tarball and wheel file lists before distributing them. Install the resulting tarball/wheel into a temporary application or virtual environment and test the imports and CLI. Do not add publishing credentials to this directory. No package install or build hook performs network calls.
 
+For GitHub validation without registry credentials, manually run **Publish Tailorgame SDKs** with `registry: verify` (the default) and version `1.0.0`. This runs the build/tests and uploads inspectable package artifacts; both publishing jobs are skipped. See [verify-only CI](PUBLISHING.md#verify-without-registry-authentication).
+
 ## Source synchronization
 
 Runtime code is copied from the already-public website downloads: JavaScript `.mjs`, `.d.mts` and `.d.ts`, Python `tailorgame.py`, and the self-contained Node CLI. SDK source and declarations are byte-for-byte copies. The CLI changes only its usage/help text to show the installed `tailorgame` command.
@@ -53,7 +55,7 @@ If this directory has been exported on its own, run `node scripts/sync-public-cl
 
 ## Release handoff
 
-1. Copy only this reviewed directory into `igeo-websites/tailorgame-integrations`, with build outputs and ignored files omitted. Do not make the application's repository public or publish its history.
+1. Keep the public integrations repository limited to this reviewed source, with build outputs and ignored files omitted. The initial source export is complete. Do not make the application's repository public or publish its history.
 2. Complete the owner's npm/PyPI authentication and [trusted publisher setup](PUBLISHING.md). The included manual workflow uses separate `npm` and `pypi` publishing environments and uploads already-built artifacts through OIDC. Environment reviewers are optional unless already required by the organization; this release is authorized. No registry credentials are included.
 3. Inspect the exact package contents and the hashes/file lists in `release-manifest.json`. Recheck registry ownership and matching versions before publishing.
 4. After successful registry publication, verify a fresh registry install, update install instructions to the registry package, and update any directory listing with the actual package/repository URLs. Until then, continue describing these as authorized release candidates.

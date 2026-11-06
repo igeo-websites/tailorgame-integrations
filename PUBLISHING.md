@@ -1,10 +1,16 @@
 # Authorized release setup
 
-The owner approved MIT publication of these public integration files as `tailorgame-sdk` on npm and PyPI, using the separate public repository [igeo-websites/tailorgame-integrations](https://github.com/igeo-websites/tailorgame-integrations). This approval does not change the visibility or license of the application repository. The current artifacts are authorized release candidates; registry publication has not been verified.
+The owner approved MIT publication of these public integration files as `tailorgame-sdk` on npm and PyPI. The separate source repository [igeo-websites/tailorgame-integrations](https://github.com/igeo-websites/tailorgame-integrations) is public; its [initial commit](https://github.com/igeo-websites/tailorgame-integrations/commit/37ff3b1ff6a690386eb197deaf64d40076dc273c) was verified on November 6, 2026. The application repository remains private. npm and PyPI packages are still unpublished, awaiting publisher authentication and configuration. Those accounts are needed only to publish packages, not to play games or use the public API.
+
+## Verify without registry authentication
+
+In GitHub Actions, manually run **Publish Tailorgame SDKs** on `main` with the exact committed version (currently `1.0.0`) and `registry: verify`. This is the default selection. It runs release-identity checks, JavaScript/Python tests, package builds, metadata validation, and artifact upload. The `publish-npm` and `publish-pypi` jobs are skipped. No registry publisher setup, npm/PyPI login, or publishing environment approval is needed for this mode; the build job has only `contents: read` permission.
+
+Download `sdk-release-candidates` to inspect its contents and SHA-256 list. A successful verification run establishes that CI can build the packages; it does not publish them or prove registry authentication works.
 
 ## One-time publisher configuration
 
-Copy this directory's reviewed source into the approved public repository root, including `.github/workflows/publish.yml`. Create the GitHub environments `npm` and `pypi`, each with a deployment branch restriction to `main`. Required reviewers are optional unless the organization already requires them; this release is already authorized. The workflow builds artifacts before either publishing job, and the uploaded `sdk-release-candidates` artifact includes its SHA-256 list.
+The public repository contains the reviewed source and `.github/workflows/publish.yml`. Before registry publication, create the GitHub environments `npm` and `pypi`, each with a deployment branch restriction to `main`. Required reviewers are optional unless the organization already requires them; this release is already authorized. The workflow builds artifacts before either publishing job, and the uploaded `sdk-release-candidates` artifact includes its SHA-256 list.
 
 Configure the registries with these exact values:
 
@@ -26,7 +32,7 @@ Registry configuration and authentication are separate from source preparation. 
 ## Release
 
 1. Commit matching versions and approved package contents to `main`. Keep the public SDK version constants, declarations, npm manifest and Python metadata aligned.
-2. In GitHub Actions, manually run **Publish Tailorgame SDKs** with the exact stable `x.y.z` version and `npm`, `pypi`, or `all`. No push or pull-request event triggers publication. Select only the registry that still needs this version; for example, choose `pypi` if the first npm version was already published during bootstrap.
+2. In GitHub Actions, manually run **Publish Tailorgame SDKs** with the exact stable `x.y.z` version and explicitly select `npm`, `pypi`, or `all` to publish. The default `verify` selection only builds and tests. No push or pull-request event triggers publication. Select only the registry that still needs this version; for example, choose `pypi` if the first npm version was already published during bootstrap.
 3. Let the build/test job complete and inspect its artifacts and checksum summary. If an environment has configured required reviewers, complete that existing GitHub review step. Each publisher uploads the already-built artifact rather than rebuilding in the publishing job; the workflow itself does not introduce another required human approval.
 4. Verify both the registry metadata and a clean install from each selected registry. Update documentation from “not yet published” only after that succeeds. Record the registry links and version; do not infer registry success from a GitHub commit or a local build.
 

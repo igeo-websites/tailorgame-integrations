@@ -9,11 +9,11 @@ name: Publish Tailorgame SDKs
         type: string
         default: '1.0.0'
       registry:
-        description: Registry to publish after reviewing built artifacts
+        description: Verify only, or select a registry to publish
         required: true
         type: choice
-        default: all
-        options: [all, npm, pypi]
+        default: verify
+        options: [verify, all, npm, pypi]
 
 permissions:
   contents: read
