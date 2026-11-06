@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tailorgame-sdk"
+version = "1.0.0"
+description = "Standard-library-only public read-only Tailorgame client"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+keywords = ["tailorgame", "games", "sdk"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://tailorgame.com"
+Documentation = "https://tailorgame.com/docs"
+Repository = "https://github.com/igeo-websites/tailorgame-integrations"
+Issues = "https://github.com/igeo-websites/tailorgame-integrations/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["tailorgame"]
+include-package-data = false

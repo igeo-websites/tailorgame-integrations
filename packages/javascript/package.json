@@ -1,0 +1,25 @@
+{
+  "name": "tailorgame-sdk",
+  "version": "1.0.0",
+  "description": "Dependency-free public read-only Tailorgame client for JavaScript and TypeScript, with a Node.js CLI.",
+  "private": false,
+  "license": "MIT",
+  "type": "module",
+  "main": "./tailorgame.mjs",
+  "types": "./tailorgame.d.mts",
+  "exports": {
+    ".": {
+      "types": "./tailorgame.d.mts",
+      "import": "./tailorgame.mjs"
+    }
+  },
+  "bin": { "tailorgame": "./bin/tailorgame.mjs" },
+  "files": ["tailorgame.mjs", "tailorgame.d.mts", "tailorgame.d.ts", "bin/tailorgame.mjs", "README.md", "LICENSE"],
+  "engines": { "node": ">=24.12.0" },
+  "homepage": "https://tailorgame.com/docs",
+  "repository": { "type": "git", "url": "git+https://github.com/igeo-websites/tailorgame-integrations.git", "directory": "packages/javascript" },
+  "bugs": { "url": "https://github.com/igeo-websites/tailorgame-integrations/issues" },
+  "keywords": ["tailorgame", "games", "sdk", "cli", "typescript"],
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
+  "scripts": { "test": "node --test tests/*.test.mjs" }
+}

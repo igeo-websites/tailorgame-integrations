@@ -1,0 +1,125 @@
+name: Publish Tailorgame SDKs
+
+"on":
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact package version already committed to main
+        required: true
+        type: string
+        default: '1.0.0'
+      registry:
+        description: Registry to publish after reviewing built artifacts
+        required: true
+        type: choice
+        default: all
+        options: [all, npm, pypi]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tailorgame-sdk-publication
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'igeo-websites/tailorgame-integrations' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Validate release identity
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, re, tomllib
+          version = os.environ['RELEASE_VERSION']
+          assert re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+', version), 'Use a stable x.y.z version'
+          js = json.loads(pathlib.Path('packages/javascript/package.json').read_text())
+          py = tomllib.loads(pathlib.Path('packages/python/pyproject.toml').read_text())['project']
+          assert js['name'] == py['name'] == 'tailorgame-sdk'
+          assert js['version'] == py['version'] == version
+          assert js['license'] == py['license'] == 'MIT'
+          assert js['private'] is False
+          assert js['repository']['url'] == 'git+https://github.com/igeo-websites/tailorgame-integrations.git'
+          PY
+      - name: Test public clients
+        run: |
+          npm --prefix packages/javascript test
+          PYTHONPATH=packages/python/src python -m unittest discover -s packages/python/tests
+      - name: Build inspectable release artifacts
+        run: |
+          mkdir -p release/npm release/python
+          npm pack --dry-run --json --ignore-scripts ./packages/javascript
+          npm pack --ignore-scripts ./packages/javascript --pack-destination release/npm
+          python -m pip install build twine
+          python -m build packages/python --outdir release/python
+          python -m twine check --strict release/python/*
+          sha256sum release/npm/*.tgz release/python/* > release/SHA256SUMS
+          cat release/SHA256SUMS >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v5
+        with:
+          name: sdk-release-candidates
+          path: release/
+          if-no-files-found: error
+          retention-days: 14
+
+  publish-npm:
+    needs: build
+    if: inputs.registry == 'all' || inputs.registry == 'npm'
+    runs-on: ubuntu-latest
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/tailorgame-sdk
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - uses: actions/download-artifact@v5
+        with:
+          name: sdk-release-candidates
+          path: release/
+      - name: Verify artifact checksums
+        run: sha256sum --check release/SHA256SUMS
+      - name: Verify npm supports trusted publishing
+        run: |
+          node -e 'const v = require("node:child_process").execFileSync("npm", ["--version"], {encoding:"utf8"}).trim().split(".").map(Number); if (v[0] < 11 || (v[0] === 11 && (v[1] < 5 || (v[1] === 5 && v[2] < 1)))) throw Error("npm 11.5.1+ required")'
+      - name: Publish reviewed tarball through npm OIDC
+        run: npm publish release/npm/*.tgz --ignore-scripts --access public
+
+  publish-pypi:
+    needs: build
+    if: inputs.registry == 'all' || inputs.registry == 'pypi'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/tailorgame-sdk/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          name: sdk-release-candidates
+          path: release/
+      - name: Verify artifact checksums
+        run: sha256sum --check release/SHA256SUMS
+      - name: Publish reviewed Python distributions through PyPI OIDC
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: release/python/

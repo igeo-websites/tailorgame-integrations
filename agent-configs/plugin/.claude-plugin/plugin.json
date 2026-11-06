@@ -1,0 +1,9 @@
+{
+  "name": "tailorgame-public",
+  "version": "1.0.0",
+  "description": "Public read-only Tailorgame discovery and SDK integration guidance.",
+  "homepage": "https://tailorgame.com/docs",
+  "repository": "https://github.com/igeo-websites/tailorgame-integrations",
+  "license": "MIT",
+  "keywords": ["tailorgame", "games", "public-api", "sdk"]
+}

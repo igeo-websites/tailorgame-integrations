@@ -1,0 +1,236 @@
+{
+  "release": "1.0.0",
+  "preparedAt": "2026-11-06",
+  "published": false,
+  "licenseStatus": "MIT approved for public integration files; copyright 2026 Tailorgame",
+  "registryChecks": {
+    "checkedAt": "2026-11-06",
+    "npm": {
+      "url": "https://registry.npmjs.org/tailorgame-sdk",
+      "httpStatus": 404
+    },
+    "pypi": {
+      "url": "https://pypi.org/pypi/tailorgame-sdk/json",
+      "httpStatus": 404
+    },
+    "interpretation": "No package found at check time. Name not reserved."
+  },
+  "checks": {
+    "javascriptTestsPassed": 3,
+    "pythonTestsPassed": 3,
+    "sourceParityAndManifestTestsPassed": 3,
+    "applicationTypecheck": "passed",
+    "npmPackDryRun": "passed: exactly 7 files",
+    "pythonWheelAndSdist": "built offline with setuptools 84.2.1",
+    "installedNpmImport": "passed",
+    "installedNpmCli": "passed",
+    "installedTypescriptExports": "passed with NodeNext resolution",
+    "installedPythonWheelImport": "passed",
+    "claudeAndCursorRuntime": "not run",
+    "skillCreatorValidator": "unavailable: Python PyYAML dependency not installed; frontmatter inspected against official schema",
+    "mitLicenseInAllArchives": "passed",
+    "releaseWorkflowYaml": "parsed with Ruby Psych; manual-only trigger, build-before-publish and publisher-only OIDC verified",
+    "trustedPublishingExecution": "not run; registry publisher setup pending",
+    "skillFrontmatterYaml": "parsed successfully with Ruby Psych; name/description validated"
+  },
+  "artifacts": [
+    {
+      "path": "packages/javascript/tailorgame-sdk-1.0.0.tgz",
+      "bytes": 7157,
+      "sha256": "e7326fa30a4df521206b4acc663cb342b433dc76a4f2b6ca9720c1759b3b9b72",
+      "files": [
+        "package/LICENSE",
+        "package/package.json",
+        "package/README.md",
+        "package/bin/tailorgame.mjs",
+        "package/tailorgame.mjs",
+        "package/tailorgame.d.mts",
+        "package/tailorgame.d.ts"
+      ]
+    },
+    {
+      "path": "packages/python/dist/tailorgame_sdk-1.0.0-py3-none-any.whl",
+      "bytes": 6525,
+      "sha256": "f4a2f8e9aa440cb7a36811381089016391361381fda8c822836da70132581375",
+      "files": [
+        "tailorgame.py",
+        "tailorgame_sdk-1.0.0.dist-info/licenses/LICENSE",
+        "tailorgame_sdk-1.0.0.dist-info/METADATA",
+        "tailorgame_sdk-1.0.0.dist-info/WHEEL",
+        "tailorgame_sdk-1.0.0.dist-info/top_level.txt",
+        "tailorgame_sdk-1.0.0.dist-info/RECORD"
+      ]
+    },
+    {
+      "path": "packages/python/dist/tailorgame_sdk-1.0.0.tar.gz",
+      "bytes": 7059,
+      "sha256": "052a2607a66b2f9c58b84fdb28cf42f0f35a21423ee51f286ea9615ccb79e76f",
+      "files": [
+        "tailorgame_sdk-1.0.0/LICENSE",
+        "tailorgame_sdk-1.0.0/MANIFEST.in",
+        "tailorgame_sdk-1.0.0/PKG-INFO",
+        "tailorgame_sdk-1.0.0/README.md",
+        "tailorgame_sdk-1.0.0/pyproject.toml",
+        "tailorgame_sdk-1.0.0/setup.cfg",
+        "tailorgame_sdk-1.0.0/src/tailorgame.py",
+        "tailorgame_sdk-1.0.0/src/tailorgame_sdk.egg-info/PKG-INFO",
+        "tailorgame_sdk-1.0.0/src/tailorgame_sdk.egg-info/SOURCES.txt",
+        "tailorgame_sdk-1.0.0/src/tailorgame_sdk.egg-info/dependency_links.txt",
+        "tailorgame_sdk-1.0.0/src/tailorgame_sdk.egg-info/top_level.txt",
+        "tailorgame_sdk-1.0.0/tests/test_client.py"
+      ]
+    },
+    {
+      "path": "dist/tailorgame-public-plugin-1.0.0.zip",
+      "bytes": 3393,
+      "sha256": "9316425d33f4d5bff509cd930eb6c88c3bb7bcba2a8dc6f3e3de10ff7b98d690",
+      "files": [
+        ".claude-plugin/plugin.json",
+        "LICENSE",
+        "README.md",
+        "skills/tailorgame-public/SKILL.md"
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/publish.yml",
+      "bytes": 4569,
+      "sha256": "105c61d324fa9ae7dd5f46fbd69620daaf23e21580a3f1fb4ab963d6f337daf2"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 92,
+      "sha256": "fdcd910f189335ac14294506244ba041e0c2c54fe29d04e9fc41603dc5e93775"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1067,
+      "sha256": "5f8b2838a00e338de1ae5cbe9a9ed0e4bd84c85a85a349dee6ba26fccb6304c5"
+    },
+    {
+      "path": "PUBLISHING.md",
+      "bytes": 4585,
+      "sha256": "a261627ac4ba698a72a90660ddfa15ebf298febc6a2823afe82c43a069fca61a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5799,
+      "sha256": "ec89b64000ac6f2dd286101bd096873826ade21ec5821b11ed47fcbbc902f727"
+    },
+    {
+      "path": "agent-configs/.claude/skills/tailorgame-public/SKILL.md",
+      "bytes": 3104,
+      "sha256": "c0cf7a5fa6f3e7dd57933317a1e5d258df72c422e8cfb500a0e2f6ea1830f7e6"
+    },
+    {
+      "path": "agent-configs/.cursor/rules/tailorgame-public.mdc",
+      "bytes": 1560,
+      "sha256": "d0dfda4470bdb77d58b0ba3792bebebe5348a97516897fa3d3a8908ec2d60faa"
+    },
+    {
+      "path": "agent-configs/README.md",
+      "bytes": 2112,
+      "sha256": "2ee46ae25b029096f46f45c78022254f4b991aaf2deaa53bf5bf27414c6c1290"
+    },
+    {
+      "path": "agent-configs/plugin/.claude-plugin/plugin.json",
+      "bytes": 345,
+      "sha256": "0f4156e13c2e944612616de42a556d3e7bfca1d30890cffd3b8403705807cffb"
+    },
+    {
+      "path": "agent-configs/plugin/LICENSE",
+      "bytes": 1067,
+      "sha256": "5f8b2838a00e338de1ae5cbe9a9ed0e4bd84c85a85a349dee6ba26fccb6304c5"
+    },
+    {
+      "path": "agent-configs/plugin/README.md",
+      "bytes": 1081,
+      "sha256": "cbe01636eaf830d250b01a1d3ad36c86028f04012caa80f2290cb0081a10ca15"
+    },
+    {
+      "path": "agent-configs/plugin/skills/tailorgame-public/SKILL.md",
+      "bytes": 3104,
+      "sha256": "c0cf7a5fa6f3e7dd57933317a1e5d258df72c422e8cfb500a0e2f6ea1830f7e6"
+    },
+    {
+      "path": "packages/javascript/LICENSE",
+      "bytes": 1067,
+      "sha256": "5f8b2838a00e338de1ae5cbe9a9ed0e4bd84c85a85a349dee6ba26fccb6304c5"
+    },
+    {
+      "path": "packages/javascript/README.md",
+      "bytes": 3828,
+      "sha256": "d3a60e87c919eba0fc71ccc96996e029c09b21b5a1fbd4c7c69a430c6972925f"
+    },
+    {
+      "path": "packages/javascript/bin/tailorgame.mjs",
+      "bytes": 11018,
+      "sha256": "92188bb3aaacb71ce118e2ac92ad8cc5c9f923aa30fb5be84f7e7c412f54b9e2"
+    },
+    {
+      "path": "packages/javascript/package.json",
+      "bytes": 1101,
+      "sha256": "73ba783404f8d6752548a487ff1c49e736e0ffcccc8f5109c84bd0dda220fb64"
+    },
+    {
+      "path": "packages/javascript/tailorgame.d.mts",
+      "bytes": 1869,
+      "sha256": "fbd0ec70fdaf3c13c0651b3a7503ae8ff30dc4a8ca5b81ea259c0c9a5b42de34"
+    },
+    {
+      "path": "packages/javascript/tailorgame.d.ts",
+      "bytes": 1869,
+      "sha256": "fbd0ec70fdaf3c13c0651b3a7503ae8ff30dc4a8ca5b81ea259c0c9a5b42de34"
+    },
+    {
+      "path": "packages/javascript/tailorgame.mjs",
+      "bytes": 7592,
+      "sha256": "ccfade13ef85550743943b7895191f94c6dc6b65f6664b4771aac09a7a76f286"
+    },
+    {
+      "path": "packages/javascript/tests/client.test.mjs",
+      "bytes": 2780,
+      "sha256": "3ad11604d8dff6b6ec7b568caeff85eeef2313f0e8277b51f4649357f673509c"
+    },
+    {
+      "path": "packages/python/LICENSE",
+      "bytes": 1067,
+      "sha256": "5f8b2838a00e338de1ae5cbe9a9ed0e4bd84c85a85a349dee6ba26fccb6304c5"
+    },
+    {
+      "path": "packages/python/MANIFEST.in",
+      "bytes": 122,
+      "sha256": "920833a081a0af6ab26bac51dd04616b0e7be92dd3085a9edf56833420f8703b"
+    },
+    {
+      "path": "packages/python/README.md",
+      "bytes": 3102,
+      "sha256": "25b0acb2f2cdefe841461ff7c2123568d0e3e469842486522f1bca28b5c7d0ce"
+    },
+    {
+      "path": "packages/python/pyproject.toml",
+      "bytes": 899,
+      "sha256": "e225c5e48b9055408918fe1e08a145e0f383739ea724f19614be4182c0104a78"
+    },
+    {
+      "path": "packages/python/src/tailorgame.py",
+      "bytes": 8380,
+      "sha256": "85c7c126fe8f9641e1c9843b121a0366e3d889fe38f26e9b457286b027a316bf"
+    },
+    {
+      "path": "packages/python/tests/test_client.py",
+      "bytes": 2563,
+      "sha256": "555c21a678c32ffef9de09594a9c88efa40ebb08c003ad7ba4d5b65cbae5a25a"
+    },
+    {
+      "path": "scripts/sync-public-clients.mjs",
+      "bytes": 2084,
+      "sha256": "935e7b933028f4178cd349a87609590ac52a24760ee6bb65545da5f2a14b5b39"
+    }
+  ],
+  "publicationAuthorized": true,
+  "license": "MIT",
+  "repository": "https://github.com/igeo-websites/tailorgame-integrations",
+  "publicationStatus": "Authorized release candidates; npm/PyPI publisher authentication and setup pending"
+}

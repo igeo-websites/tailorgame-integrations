@@ -1,0 +1,4 @@
+include README.md LICENSE pyproject.toml
+include src/tailorgame.py
+recursive-include tests test_*.py
+global-exclude *.pyc
