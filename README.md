@@ -8,13 +8,36 @@ Standalone MIT-licensed release candidates for Tailorgame's existing public, rea
 | --- | --- |
 | `packages/javascript/` | `tailorgame-sdk`, ESM JavaScript with TypeScript declarations and self-contained `tailorgame` CLI |
 | `packages/python/` | `tailorgame-sdk`, Python 3.9+ standard-library client imported as `tailorgame` |
-| `agent-configs/` | Public integration skill, Claude Code plugin, and Cursor rule |
+| `skills/`, `.claude-plugin/`, `.cursor/rules/` | Canonical public skill, root Claude Code plugin, and Cursor rule |
+| `agent-configs/` | Standalone copies for manual setup and the minimal plugin ZIP |
 
 ## What these clients do
 
 List public games, read public practice rankings, and retrieve public documentation from `https://tailorgame.com`. Calls use fixed GET endpoints without credentials. They do not implement private account access, account mutations, paid generation, or payments. Catalog entries can be `coming-soon`; check their status. Rankings contain client-reported practice results.
 
 The [JavaScript package README](packages/javascript/README.md) and [Python package README](packages/python/README.md) contain working local-install examples, method signatures, timeout limits, and error handling. [Agent setup](agent-configs/README.md) explains optional assistant configuration. These are proposed distribution artifacts, not proof that a package has been released or listed by a directory.
+
+## Install the public skill
+
+Use the [Skills CLI](https://skills.sh/docs/cli) to add the public integration skill to a supported coding agent:
+
+```sh
+npx skills add igeo-websites/tailorgame-integrations --skill tailorgame-public
+```
+
+The canonical skill lives at `skills/tailorgame-public/SKILL.md`. Review the instructions and choose your target agent when prompted. This configures public API guidance; it does not sign in to Tailorgame or install an SDK package.
+
+A local checkout also works directly as a Claude Code plugin:
+
+```sh
+claude --plugin-dir /absolute/path/to/tailorgame-integrations
+```
+
+The plugin uses the root `.claude-plugin/plugin.json` and `skills/` directory. Invoke `/tailorgame-public:tailorgame-public`. For Cursor, copy `.cursor/rules/tailorgame-public.mdc` into your project's matching directory. Choose one skill installation method to avoid duplicate instructions. The smaller standalone plugin under `agent-configs/plugin/` and its ZIP remain available for manual distribution.
+
+## Package downloads
+
+The planned GitHub release is **pending**: `https://github.com/igeo-websites/tailorgame-integrations/releases/tag/v1.0.0`. This README does not claim that release or its assets exist yet. Once published and verified, its npm tarball, Python wheel, and source distribution can be installed directly without npm/PyPI publisher accounts. Registry publication is still separate and pending.
 
 ## Validate and package locally
 

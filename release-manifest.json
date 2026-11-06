@@ -32,7 +32,9 @@
     "releaseWorkflowYaml": "parsed with Ruby Psych; verify is default; verify runs build only with contents:read and skips both publishing jobs",
     "trustedPublishingExecution": "not run; registry publisher setup pending",
     "skillFrontmatterYaml": "parsed successfully with Ruby Psych; name/description validated",
-    "verifyWorkflowExecution": "not run locally; root will dispatch GitHub verification after pushing this update"
+    "verifyWorkflowExecution": "not run locally; root will dispatch GitHub verification after pushing this update",
+    "canonicalAssistantConfigParity": "passed: root skill, Claude plugin manifest, and Cursor rule exactly match standalone copies",
+    "skillsCliInstallation": "not run locally; temporary installation validation coordinated after source export"
   },
   "artifacts": [
     {
@@ -95,6 +97,16 @@
   ],
   "sourceFiles": [
     {
+      "path": ".claude-plugin/plugin.json",
+      "bytes": 345,
+      "sha256": "0f4156e13c2e944612616de42a556d3e7bfca1d30890cffd3b8403705807cffb"
+    },
+    {
+      "path": ".cursor/rules/tailorgame-public.mdc",
+      "bytes": 1560,
+      "sha256": "d0dfda4470bdb77d58b0ba3792bebebe5348a97516897fa3d3a8908ec2d60faa"
+    },
+    {
       "path": ".github/workflows/publish.yml",
       "bytes": 4573,
       "sha256": "a6e557d9b0d27237c90ee5218a37d0977c77cb0ca64c4b438e6847b9a7f05c59"
@@ -116,8 +128,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6359,
-      "sha256": "03b2a5925bbfdfa1f128f67ac19686f39eeda31fa4ea4934d3ef38182c871342"
+      "bytes": 7896,
+      "sha256": "3a044603dc8c45f8ddddba21d7dc32f734dfda05a74424f96dbb37dd976c395b"
     },
     {
       "path": "agent-configs/.claude/skills/tailorgame-public/SKILL.md",
@@ -131,8 +143,8 @@
     },
     {
       "path": "agent-configs/README.md",
-      "bytes": 2112,
-      "sha256": "2ee46ae25b029096f46f45c78022254f4b991aaf2deaa53bf5bf27414c6c1290"
+      "bytes": 2478,
+      "sha256": "096a41ec06964c65c08b57770433fc49e8238dc787695f3622c68d10f4855e38"
     },
     {
       "path": "agent-configs/plugin/.claude-plugin/plugin.json",
@@ -228,6 +240,11 @@
       "path": "scripts/sync-public-clients.mjs",
       "bytes": 2084,
       "sha256": "935e7b933028f4178cd349a87609590ac52a24760ee6bb65545da5f2a14b5b39"
+    },
+    {
+      "path": "skills/tailorgame-public/SKILL.md",
+      "bytes": 3104,
+      "sha256": "c0cf7a5fa6f3e7dd57933317a1e5d258df72c422e8cfb500a0e2f6ea1830f7e6"
     }
   ],
   "publicationAuthorized": true,
@@ -243,5 +260,11 @@
   "registryPublication": {
     "npm": false,
     "pypi": false
+  },
+  "githubReleasePublication": {
+    "published": false,
+    "plannedTag": "v1.0.0",
+    "plannedUrl": "https://github.com/igeo-websites/tailorgame-integrations/releases/tag/v1.0.0",
+    "status": "pending; release and assets not yet verified"
   }
 }
